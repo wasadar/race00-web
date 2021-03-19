@@ -9,11 +9,16 @@ function writeToInput(char){
     }
     else{
         if(isOperator(char)){
-            if(isOperator(currentchar.substring(currentchar.length -2, currentchar.length -1))){
-                document.getElementById("input").innerHTML = currentchar.substring(0, currentchar.length -2) + " " + char;
+            // if(isOperator(currentchar.substring(currentchar.length -2, currentchar.length -1))){
+            //     document.getElementById("input").innerHTML = currentchar.substring(0, currentchar.length -2) + " " + char;
+            // }else{
+            //     document.getElementById("input").innerHTML = currentchar + " " + char;
+            // }
+            if(char === "*" || char === "/"){
+                document.getElementById("input").innerHTML = currentchar + " " + char + " ";
             }else{
                 document.getElementById("input").innerHTML = currentchar + " " + char;
-            }
+            }    
         }else{
             document.getElementById("input").innerHTML = currentchar + char;
         }
