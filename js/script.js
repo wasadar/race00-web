@@ -9,15 +9,26 @@ function writeToInput(char){
     }
     else{
         if(isOperator(char)){
-            document.getElementById("input").innerHTML = currentchar + " " + char + " ";
+            if(isOperator(currentchar.substring(currentchar.length -2, currentchar.length -1))){
+                document.getElementById("input").innerHTML = currentchar.substring(0, currentchar.length -2) + " " + char + " ";
+            }else{
+                document.getElementById("input").innerHTML = currentchar + " " + char + " ";
+            }
         }else{
             document.getElementById("input").innerHTML = currentchar + char;
         }
     }
 }
 function calculate(){
-    // var egal = eval(document.getElementById('input').innerHTML);
-    // document.getElementById('output').innerHTML = egal;
+    // let curr = document.getElementById('input').innerHTML;
+    // if(curr.charAt(curr.length-1) === "%"){
+    //     let num = curr.substring(0, curr.indexOf("%"));
+    //     document.getElementById('output').innerHTML = num/100;
+    // }else{
+    //     var egal = eval(document.getElementById('input').innerHTML);
+    //     document.getElementById('output').innerHTML = egal;
+    // }
+    //console.log(document.getElementById('input').innerHTML);
     document.getElementById('output').innerHTML = get_res(document.getElementById('input').innerHTML);
 }
 let get_res = function(data){
@@ -47,6 +58,7 @@ let get_res = function(data){
             }
             else {
                 res_arr.push(arr[ind]);
+                minus = false;
             }
         }
         else {
