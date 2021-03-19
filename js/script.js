@@ -20,16 +20,17 @@ function writeToInput(char){
     }
 }
 function calculate(){
-    // let curr = document.getElementById('input').innerHTML;
-    // if(curr.charAt(curr.length-1) === "%"){
-    //     let num = curr.substring(0, curr.indexOf("%"));
-    //     document.getElementById('output').innerHTML = num/100;
-    // }else{
-    //     var egal = eval(document.getElementById('input').innerHTML);
-    //     document.getElementById('output').innerHTML = egal;
-    // }
+    let curr = document.getElementById('input').innerHTML;
+    if(curr.charAt(curr.length-1) === "%"){
+        let num = curr.substring(0, curr.indexOf("%"));
+        document.getElementById('output').innerHTML = num/100;
+    }else{
+        // var egal = eval(document.getElementById('input').innerHTML);
+        // document.getElementById('output').innerHTML = egal;
+        document.getElementById('output').innerHTML = get_res(document.getElementById('input').innerHTML);
+    }
     //console.log(document.getElementById('input').innerHTML);
-    document.getElementById('output').innerHTML = get_res(document.getElementById('input').innerHTML);
+    
 }
 let get_res = function(data){
     if (data.match(/\([^\(]*?\)/g) !== null) {
