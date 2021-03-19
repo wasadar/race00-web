@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Calculator</title>
+        <meta charset="utf-8">
+        <meta name="description" content="race00. Calculator">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="title">Calculator</h1>
+            <div id="in-output">
+                <p id="output">0</p>
+                <p id="input">0</p>
+            </div>
+            <table>
+                <tbody>
+                    <tr>
+                        <td onclick="Clean()">C</td>
+                        <td>&#43;&#47;&#45;</td>
+                        <td>&#37;</td>
+                        <td class="operator">&#47;</td>
+                    </tr>
+                    <tr>
+                        <td onclick="writeToInput(7)" class="number">7</td>
+                        <td onclick="writeToInput(8)" class="number">8</td>
+                        <td onclick="writeToInput(9)" class="number">9</td>
+                        <td onclick="writeToInput('*')" class="operator">&#42;</td>
+                    </tr>
+                    <tr>
+                        <td onclick="writeToInput(4)" class="number">4</td>
+                        <td onclick="writeToInput(5)" class="number">5</td>
+                        <td onclick="writeToInput(6)" class="number">6</td>
+                        <td onclick="writeToInput('+')" class="operator">&#43;</td>
+                    </tr>
+                    <tr>
+                        <td onclick="writeToInput(1)" class="number">1</td>
+                        <td onclick="writeToInput(2)" class="number">2</td>
+                        <td onclick="writeToInput(3)" class="number">3</td>
+                        <td onclick="writeToInput('-')" class="operator">&#45;</td>
+                    </tr>
+                    <tr>
+                        <td onclick="writeToInput('.')" id="point">&#46;</td>
+                        <td onclick="writeToInput(0)" class="number">0</td>
+                        <td onclick="calculate()" id="equal" colspan="2">&#61;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script src="js/script.js"></script>
+    </body>
+</html>
