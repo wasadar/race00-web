@@ -10,9 +10,9 @@ function writeToInput(char){
     else{
         if(isOperator(char)){
             if(isOperator(currentchar.substring(currentchar.length -2, currentchar.length -1))){
-                document.getElementById("input").innerHTML = currentchar.substring(0, currentchar.length -2) + " " + char + " ";
+                document.getElementById("input").innerHTML = currentchar.substring(0, currentchar.length -2) + " " + char;
             }else{
-                document.getElementById("input").innerHTML = currentchar + " " + char + " ";
+                document.getElementById("input").innerHTML = currentchar + " " + char;
             }
         }else{
             document.getElementById("input").innerHTML = currentchar + char;
@@ -43,6 +43,7 @@ let get_res = function(data){
     let res_arr = new Array();
     let minus = false;
     let temp;
+    console.log(arr);
     for (let ind = 0; ind < arr.length; ind++){
         if (Number.isNaN(Number(arr[ind])) !== true) {
             if ((minus) && (arr[ind][0] !== "-") && (arr[ind][0] !== "+")) {
@@ -63,7 +64,7 @@ let get_res = function(data){
             }
         }
         else {
-            if (arr[ind] === "-"){
+            if (arr[ind] == "-"){
                 if (minus){
                     minus = false;
                 }
@@ -76,6 +77,7 @@ let get_res = function(data){
             }
         }
     }
+    console.log(res_arr);
     let check = true;
     while (check) {
         check = false;
@@ -91,6 +93,7 @@ let get_res = function(data){
             check = true;
         }
     }
+    console.log(arr);
     let res = 0;
     for (el of arr){
         res += Number(el);
@@ -108,15 +111,14 @@ function changeSign(){
         document.getElementById('input').innerHTML = -1 * Number(current);
     }else{
         let arr = Array.from(current);
-        console.log(arr);
+       
         for (let i = arr.length-1; i >=0; i--) {
             if(isOperator(arr[i])){
-                console.log(arr[i]);
                 if(isOperator(arr[i-3]) || isOperator(arr[i-2])){
                     if(arr[i] === "-"){
                         arr[i] = "+";
                     }else arr[i] = "-"; 
-                    console.log(arr);
+                    
                     document.getElementById('input').innerHTML = arr.join("");
                 }else{
                     if(current.charAt(i) === "-"){
