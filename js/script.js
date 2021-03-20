@@ -17,7 +17,7 @@ function writeToInput(char){
             if(char === "*" || char === "/"){
                 document.getElementById("input").innerHTML = currentchar + " " + char + " ";
             }else{
-                document.getElementById("input").innerHTML = currentchar + " " + char;
+                document.getElementById("input").innerHTML = currentchar + " " + char + " ";
             }    
         }else{
             document.getElementById("input").innerHTML = currentchar + char;
@@ -37,15 +37,22 @@ function calculate(){
     //console.log(document.getElementById('input').innerHTML);
     
 }
-let get_res = function(data){
-    if (data.match(/\([^\(]*?\)/g) !== null) {
+function get_res(data){
+    if (data.match(/^\([^\(]*?\)$/g) !== null) {
         data = data.slice(1,-1);
     }
-    while (data.match(/\([^\(]*?\)/g) !== null){
-        data.replace(/\([^\(]*?\)/,get_res(data.match(/\([^\(]*?\)/g)[0]));
+    while (data.match(/\([^\(]*?\)/g) !== null) {
+        data = data.replace(/\([^\(]*?\)/,get_res(data.match(/\([^\(]*?\)/g)[0]));
     }
     let arr = data.split(" ");
     let res_arr = new Array();
+    for (let ind = 0; ind < arr.length; ind++) {
+        if (arr[ind].length !== 0) {
+            res_arr.push(arr[ind]);
+        }
+    }
+    arr = res_arr;
+    res_arr = new Array();
     let minus = false;
     let temp;
     console.log(arr);
