@@ -19,12 +19,16 @@
     border: 1px solid gray;
     height: 200px;
     padding: 5px;
-    background: white; 
+    background: white;
 }
 #input{
     font-size: 70px;
     color: #79a6d2;
     text-align: right;
+    width: 11.5ch;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 #output{
     font-size: 30px;
