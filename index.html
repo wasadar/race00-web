@@ -19,6 +19,12 @@
                         <td onclick="Clean()">C</td>
                         <td onclick="changeSign()">&#43;&#47;&#45;</td>
                         <td onclick="writeToInput('%')" class="operator">&#37;</td>
+                        <td onclick="writeToInput('√')">&radic;</td>
+                    </tr>
+                    <tr>
+                        <td onclick="writeToInput('(')">&#40;</td>
+                        <td onclick="writeToInput(')')">&#41;</td>
+                        <td onclick="writeToInput('^')">&#94;</td>
                         <td onclick="writeToInput('/')" class="operator">&#47;</td>
                     </tr>
                     <tr>
@@ -42,7 +48,8 @@
                     <tr>
                         <td onclick="writeToInput('.')" id="point">&#46;</td>
                         <td onclick="writeToInput(0)" class="number">0</td>
-                        <td onclick="calculate()" id="equal" colspan="2">&#61;</td>
+                        <td onclick="calculate()" id="equal">&#61;</td>
+                        <td onclick="writeToInput('!')" class="operator">!</td>
                     </tr>
                 </tbody>
             </table>

@@ -5,7 +5,12 @@ function Clean(){
 function writeToInput(char){
     let currentchar = document.getElementById("input").innerHTML;
     if(currentchar == "0"){
-        document.getElementById("input").innerHTML = char;
+        if(isOperator(char)){
+            document.getElementById("input").innerHTML = char + " ";
+        }else{
+            document.getElementById("input").innerHTML = char;
+        }
+        
     }
     else{
         if(isOperator(char)){
@@ -156,10 +161,10 @@ function get_res(data){
     while (check) {
         check = false;
         arr = res_arr;
-        temp = Math.max(arr.indexOf("^"), arr.indexOf("r"));
+        temp = Math.max(arr.indexOf("^"), arr.indexOf("√"));
         if (temp !== -1) {
             if (arr[temp] === "^") {
-                tmp1 = arr[temp - 1];
+                tmp1 = arr[temp - 1];;
                 tmp2 = arr[temp + 1];
                 if (arr[temp - 1].match(/^[+-]?[0-9]+%$/) !== null) {
                     tmp1 = Number(arr[temp - 1].slice(0, -1)) / 100;
@@ -173,12 +178,14 @@ function get_res(data){
                 tmp1 = arr[temp - 1];
                 tmp2 = arr[temp + 1];
                 if (arr[temp - 1].match(/^[+-]?[0-9]+%$/) !== null) {
-                    tmp1 = Number(arr[temp - 1].slice(0, -1)) / 100;
-                }
+                        tmp1 = Number(arr[temp - 1].slice(0, -1)) / 100;
+                } 
+                 
                 if (arr[temp + 1].match(/^[+-]?[0-9]+%$/) !== null) {
                     tmp2 = Number(arr[temp + 1].slice(0, -1)) / 100;
                 }
-                arr.splice(temp - 1, 3, String(Number(tmp1) ** (1 / Number(tmp2))));
+                console.log(arr);
+                arr.splice(temp - 1, 3, String(Number(tmp2) ** (1 / Number(tmp1))));
             }
             check = true;
         }
@@ -226,7 +233,7 @@ function get_res(data){
     return String(res);
 }
 function isOperator(char){
-    if(char === "+" || char === "-" || char === "*" || char === "/"){
+    if(char === "+" || char === "-" || char === "*" || char === "/" || char === "^" || char == "√"){
         return true;
     }else return false;
 }
@@ -242,7 +249,7 @@ function changeSign(){
                 if(isOperator(arr[i-3]) || isOperator(arr[i-2])){
                     if(arr[i] === "-"){
                         arr[i] = "+";
-                    }else arr[i] = "-"; 
+                    }else arr[i] = "-";
                     
                     document.getElementById('input').innerHTML = arr.join("");
                 }else{
