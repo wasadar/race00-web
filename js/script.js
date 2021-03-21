@@ -161,7 +161,14 @@ function get_res(data){
     while (check) {
         check = false;
         arr = res_arr;
-        temp = Math.max(arr.indexOf("^"), arr.indexOf("√"));
+        tmp1 = arr.indexOf("^");
+        tmp2 = arr.indexOf("√");
+        if ((tmp1 !== -1) && (tmp2 !== 2)) {
+            temp = Math.min(arr.indexOf("√"), arr.indexOf("^"));
+        }
+        else {
+            temp = Math.max(arr.indexOf("√"), arr.indexOf("^"));
+        }
         if (temp !== -1) {
             if (arr[temp] === "^") {
                 tmp1 = arr[temp - 1];;
@@ -190,10 +197,18 @@ function get_res(data){
             check = true;
         }
     }
+    console.log(arr);
     check = true;
     while (check) {
         check = false;
-        temp = Math.max(arr.indexOf("/"),arr.indexOf("*"));
+        tmp1 = arr.indexOf("/");
+        tmp2 = arr.indexOf("*");
+        if ((tmp1 !== -1) && (tmp2 !== 2)) {
+            temp = Math.min(arr.indexOf("/"), arr.indexOf("*"));
+        }
+        else {
+            temp = Math.max(arr.indexOf("/"), arr.indexOf("*"));
+        }
         if (temp !== -1){
             if (arr[temp] === "/") {
                 tmp1 = arr[temp - 1];
