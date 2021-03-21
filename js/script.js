@@ -25,15 +25,15 @@ function writeToInput(char){
     }
 }
 function calculate(){
-    let curr = document.getElementById('input').innerHTML;
+    /*let curr = document.getElementById('input').innerHTML;
     if(curr.charAt(curr.length-1) === "%"){
         let num = curr.substring(0, curr.indexOf("%"));
         document.getElementById('output').innerHTML = num/100;
     }else{
         // var egal = eval(document.getElementById('input').innerHTML);
-        // document.getElementById('output').innerHTML = egal;
+        // document.getElementById('output').innerHTML = egal;*/
         document.getElementById('output').innerHTML = get_res(document.getElementById('input').innerHTML);
-    }
+    //}
     //console.log(document.getElementById('input').innerHTML);
     
 }
@@ -46,6 +46,9 @@ function get_res(data){
     }
     let arr = data.split(" ");
     let res_arr = new Array();
+    let temp;
+    let tmp1;
+    let tmp2;
     for (let ind = 0; ind < arr.length; ind++) {
         if (arr[ind].length !== 0) {
             res_arr.push(arr[ind]);
@@ -54,7 +57,6 @@ function get_res(data){
     arr = res_arr;
     res_arr = new Array();
     let minus = false;
-    let temp;
     console.log(arr);
     for (let ind = 0; ind < arr.length; ind++){
         if (Number.isNaN(Number(arr[ind])) !== true) {
@@ -76,7 +78,67 @@ function get_res(data){
             }
         }
         else {
-            if (arr[ind] == "-"){
+            if (arr[ind].match(/^[+-]?[0-9]+%$/) !== null) {
+                if ((minus) && (arr[ind][0] !== "-") && (arr[ind][0] !== "+")) {
+                    res_arr.push("-" + arr[ind]);
+                    minus = false;
+                }
+                else if (minus && (arr[ind][0] !== "-")) {
+                    res_arr.push("-" + arr[ind].slice(1));
+                    minus = false;
+                }
+                else if (minus && (arr[ind][0] !== "+")) {
+                    res_arr.push(arr[ind].slice(1));
+                    minus = false;
+                }
+                else {
+                    res_arr.push(arr[ind]);
+                    minus = false;
+                }
+            }
+            else if (arr[ind].match(/^[+-]?[0-9]+!$/) !== null) {
+                if ((minus) && (arr[ind][0] !== "-") && (arr[ind][0] !== "+")) {
+                    temp = 1;
+                    for (let i = 1; i < Number(arr[ind].slice(0, -1)) + 1; i++) {
+                        temp *= i;
+                    }
+                    res_arr.push("-" + temp);
+                    minus = false;
+                }
+                else if (minus && (arr[ind][0] !== "-")) {
+                    temp = 1;
+                    for (let i = 1; i < Number(arr[ind].slice(1, -1)) + 1; i++) {
+                        temp *= i;
+                    }
+                    res_arr.push("-" + temp);
+                    minus = false;
+                }
+                else if (minus && (arr[ind][0] !== "+")) {
+                    temp = 1;
+                    for (let i = 1; i < Number(arr[ind].slice(1, -1)) + 1; i++) {
+                        temp *= i;
+                    }
+                    res_arr.push(String(temp));
+                    minus = false;
+                }
+                else if (arr[ind][0] !== "-") {
+                    temp = 1;
+                    for (let i = 1; i < Number(arr[ind].slice(0, -1)) + 1; i++) {
+                        temp *= i;
+                    }
+                    res_arr.push(String(temp));
+                    minus = false;
+                }
+                else {
+                    temp = 1;
+                    for (let i = 1; i < Number(arr[ind].slice(1, -1)) + 1; i++) {
+                        temp *= i;
+                    }
+                    res_arr.push("-" + temp);
+                    minus = false;
+                }
+            }
+            else if (arr[ind] == "-"){
                 if (minus){
                     minus = false;
                 }
@@ -94,23 +156,74 @@ function get_res(data){
     while (check) {
         check = false;
         arr = res_arr;
-        temp = Math.max(arr.indexOf("/"),arr.indexOf("*"));
-        if (temp !== -1){
-            if (arr[temp] === "/"){
-                arr.splice(temp - 1,3,Number(arr[temp-1]) / Number(arr[temp+1]));
+        temp = Math.max(arr.indexOf("^"), arr.indexOf("r"));
+        if (temp !== -1) {
+            if (arr[temp] === "^") {
+                tmp1 = arr[temp - 1];
+                tmp2 = arr[temp + 1];
+                if (arr[temp - 1].match(/^[+-]?[0-9]+%$/) !== null) {
+                    tmp1 = Number(arr[temp - 1].slice(0, -1)) / 100;
+                }
+                if (arr[temp + 1].match(/^[+-]?[0-9]+%$/) !== null) {
+                    tmp2 = Number(arr[temp + 1].slice(0, -1)) / 100;
+                }
+                arr.splice(temp - 1, 3, String(Number(tmp1) ** Number(tmp2)));
             }
             else {
-                arr.splice(temp - 1,3,Number(arr[temp-1]) * Number(arr[temp+1]));
+                tmp1 = arr[temp - 1];
+                tmp2 = arr[temp + 1];
+                if (arr[temp - 1].match(/^[+-]?[0-9]+%$/) !== null) {
+                    tmp1 = Number(arr[temp - 1].slice(0, -1)) / 100;
+                }
+                if (arr[temp + 1].match(/^[+-]?[0-9]+%$/) !== null) {
+                    tmp2 = Number(arr[temp + 1].slice(0, -1)) / 100;
+                }
+                arr.splice(temp - 1, 3, String(Number(tmp1) ** (1 / Number(tmp2))));
+            }
+            check = true;
+        }
+    }
+    check = true;
+    while (check) {
+        check = false;
+        temp = Math.max(arr.indexOf("/"),arr.indexOf("*"));
+        if (temp !== -1){
+            if (arr[temp] === "/") {
+                tmp1 = arr[temp - 1];
+                tmp2 = arr[temp + 1];
+                if (arr[temp - 1].match(/^[+-]?[0-9]+%$/) !== null) {
+                    tmp1 = Number(arr[temp - 1].slice(0, -1)) / 100;
+                }
+                if (arr[temp + 1].match(/^[+-]?[0-9]+%$/) !== null) {
+                    tmp2 = Number(arr[temp + 1].slice(0, -1)) / 100;
+                }
+                arr.splice(temp - 1, 3, String(Number(tmp1) / Number(tmp2)));
+            }
+            else {
+                tmp1 = arr[temp - 1];
+                tmp2 = arr[temp + 1];
+                if (arr[temp - 1].match(/^[+-]?[0-9]+%$/) !== null) {
+                    tmp1 = Number(arr[temp - 1].slice(0, -1)) / 100;
+                }
+                if (arr[temp + 1].match(/^[+-]?[0-9]+%$/) !== null) {
+                    tmp2 = Number(arr[temp + 1].slice(0, -1)) / 100;
+                }
+                arr.splice(temp - 1, 3, String(Number(tmp1) * Number(tmp2)));
             }
             check = true;
         }
     }
     console.log(arr);
     let res = 0;
-    for (el of arr){
-        res += Number(el);
+    for (let ind = 0; ind < arr.length; ind++) {
+        if (Number.isNaN(Number(arr[ind])) !== true) {
+            res += Number(arr[ind]);
+        }
+        else {
+            res += res * (Number(arr[ind].slice(0, -1)) / 100);
+        }
     }
-    return res;
+    return String(res);
 }
 function isOperator(char){
     if(char === "+" || char === "-" || char === "*" || char === "/"){

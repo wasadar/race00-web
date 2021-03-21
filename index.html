@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Calculator</title>
@@ -17,9 +17,9 @@
                 <tbody>
                     <tr>
                         <td onclick="Clean()">C</td>
-                        <td>&#43;&#47;&#45;</td>
-                        <td>&#37;</td>
-                        <td class="operator">&#47;</td>
+                        <td onclick="changeSign()">&#43;&#47;&#45;</td>
+                        <td onclick="writeToInput('%')" class="operator">&#37;</td>
+                        <td onclick="writeToInput('/')" class="operator">&#47;</td>
                     </tr>
                     <tr>
                         <td onclick="writeToInput(7)" class="number">7</td>
