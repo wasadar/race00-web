@@ -59,6 +59,7 @@ function get_res(data){
     let temp;
     let tmp1;
     let tmp2;
+    let tmp3;
     for (let ind = 0; ind < arr.length; ind++) {
         if (arr[ind].length !== 0) {
             res_arr.push(arr[ind]);
@@ -156,23 +157,47 @@ function get_res(data){
                     minus = true;
                 }
             }
+            else if (arr[ind].match(/^-?√$/) !== null) {
+                if ((minus) && (arr[ind][0] !== "-")) {
+                    res_arr.push("-" + arr[ind]);
+                    minus = false;
+                }
+                else if (minus) {
+                    res_arr.push(arr[ind].slice(1));
+                    minus = false;
+                }
+                else {
+                    res_arr.push(arr[ind]);
+                    minus = false;
+                }
+            }
             else if (arr[ind] !== "+"){
                 res_arr.push(arr[ind]);
             }
         }
     }
     console.log(res_arr);
+    arr = res_arr;
     let check = true;
     while (check) {
         check = false;
-        arr = res_arr;
         tmp1 = arr.indexOf("^");
         tmp2 = arr.indexOf("√");
-        if ((tmp1 !== -1) && (tmp2 !== -1)) {
+        tmp3 = arr.indexOf("-√");
+        if ((tmp1 !== -1) && (tmp2 !== -1) && (tmp3 !== -1) {
             temp = Math.min(arr.indexOf("√"), arr.indexOf("^"));
         }
         else {
-            temp = Math.max(arr.indexOf("√"), arr.indexOf("^"));
+            res_arr = new Array();
+            res_arr.push(tmp1);
+            res_arr.push(tmp2);
+            res_arr.push(tmp3);
+            temp = res_arr[0];
+            for (let el of res_arr) {
+                if ((el !== -1) && (el < temp)) {
+                    temp = el;
+                }
+            }
         }
         if (temp !== -1) {
             if (arr[temp] === "^") {
