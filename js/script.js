@@ -194,7 +194,10 @@ function get_res(data){
             res_arr.push(tmp3);
             temp = res_arr[0];
             for (let el of res_arr) {
-                if ((el !== -1) && (el < temp)) {
+                if ((el !== -1) && (el < temp) && (temp !== -1)) {
+                    temp = el;
+                }
+                if (temp === -1) {
                     temp = el;
                 }
             }
@@ -212,7 +215,7 @@ function get_res(data){
                 arr.splice(temp - 1, 3, String(Number(tmp1) ** Number(tmp2)));
             }
             else {
-                if (arr[temp][0] != "-") {
+                if (arr[temp][0] !== "-") {
                     tmp1 = arr[temp + 1];
                     if (arr[temp + 1].match(/^[+-]?[0-9]+%$/) !== null) {
                         tmp1 = Number(arr[temp + 1].slice(0, -1)) / 100;
