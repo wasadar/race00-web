@@ -1,6 +1,10 @@
+.cont{
+
+}
 .container{
     width: fit-content;
     margin: auto;
+    background: #4080bf;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: 40px solid #4080bf;
@@ -18,11 +22,16 @@
     border: 1px solid gray;
     height: 200px;
     padding: 5px;
+    background: white;
 }
 #input{
     font-size: 70px;
     color: #79a6d2;
     text-align: right;
+    width: 14.5ch; /* 11.5ch;( */
+    overflow-x: scroll;
+    white-space: nowrap;
+    /*text-overflow: ellipsis;*/
 }
 #output{
     font-size: 30px;
@@ -34,6 +43,7 @@
 table{
     border-collapse: collapse;
     background-color: #4080bf;
+    text-shadow: 2px 2px gray;
 }
 td{
     padding: 40px;
@@ -53,4 +63,5 @@ td{
 }
 td:hover, #equal:hover{
     background: #9fbfdf;
+    text-shadow: 2px 2px #E0F97D;
 }
