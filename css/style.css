@@ -87,6 +87,7 @@ td:hover, #equal:hover{
 #length{
     display: none;
     margin: 25px;
+    height: 700px;
 }
 #length div, .weight div, #square div, #numerical div{
     display: flex;
@@ -105,10 +106,12 @@ label{
 .weight{
     display: none;
     margin: 25px;
+    height: 700px;
 }
 #square{
     display: none;
     margin: 25px;
+    height: 700px;
 }
 #numerical{
     display: none;

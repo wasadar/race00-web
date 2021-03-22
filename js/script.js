@@ -477,6 +477,7 @@ function forCalculator(){
     document.getElementById('length').style = "display: none;"
     document.getElementById('square').style = "display: none;"
     document.getElementById('myDIV').style = "display: none;"
+    document.getElementById('numerical').style = "display: none;"
     document.getElementById('Calculator').style = "color: white;"
     document.getElementById('Length').style = "color: black;"
     document.getElementById('Weights').style = "color: black;"
