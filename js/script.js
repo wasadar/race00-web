@@ -35,17 +35,7 @@ function writeToInput(char){
     }
 }
 function calculate(){
-    /*let curr = document.getElementById('input').innerHTML;
-    if(curr.charAt(curr.length-1) === "%"){
-        let num = curr.substring(0, curr.indexOf("%"));
-        document.getElementById('output').innerHTML = num/100;
-    }else{
-        // var egal = eval(document.getElementById('input').innerHTML);
-        // document.getElementById('output').innerHTML = egal;*/
-        document.getElementById('output').innerHTML = get_res(document.getElementById('input').innerHTML);
-    //}
-    //console.log(document.getElementById('input').innerHTML);
-    
+    document.getElementById('output').innerHTML = get_res(document.getElementById('input').innerHTML);
 }
 function get_res(data){
     if (data.match(/^\([^\(]*?\)$/g) !== null) {
@@ -331,4 +321,207 @@ function changeSign(){
             } 
         }
     }
+}
+function lengthConv() {
+    if (length.style.display === "none") {
+        length.style.display = "block";
+    } else {
+        length.style.display = "none";
+    }
+  }
+const lengthConverter = (id, value) => {
+    let feet = document.querySelector("#inputFeet");
+    let metr = document.querySelector("#inputMeters");
+    let cm = document.querySelector("#inputcm");
+    let yards = document.querySelector("#inputYards");
+    let km = document.querySelector("#inputKilometers");
+    let miles = document.querySelector("#inputMiles");
+    if(id == "inputFeet") {
+        metr.value = value/3.28084;
+        cm.value = value*30.48;
+        yards.value = value*0.33333;
+        km.value = value/3280.8;
+        miles.value = value*5280.0016896;
+    }
+    else if(id == "inputMeters"){
+        feet.value = value*3.2808;
+        cm.value = value*100;
+        yards.value = value*1.09361;
+        km.value = value/1000;
+        miles.value = value*1609.34;
+    }
+    else if(id == "inputcm"){
+        feet.value = value/30.48;
+        metr.value = value/100;
+        yards.value = value/91.44;
+        km.value = value/100000;
+        miles.value = value/160934;
+    }
+    else if(id == "inputYards"){
+        feet.value = value*3;
+        metr.value = value*1.09361;
+        cm.value = value*91.44;
+        km.value = value*1093.61;
+        miles.value = value*1759.99469184;
+    }
+    else if(id == "inputKilometers"){
+        feet.value = value*3280.84;
+        metr.value = value*1000;
+        cm.value = value*100000;
+        yards.value = value*1093.61
+        miles.value = value/1.60934;
+    }
+    else if(id == "inputMiles"){
+        feet.value = value*5280;
+        metr.value = value*1609.34;
+        cm.value = value*160934;
+        yards.value = value*1760;
+        km.value = value*1.60934;
+    }
+}
+
+    const weightConverter = (id, value) => {
+        let once = document.querySelector("#inputOnce");
+        let kilogram = document.querySelector("#inputKilogram");
+        let pound = document.querySelector("#inputPound");
+        let gram = document.querySelector("#inputGram");
+        let tonne = document.querySelector("#inputTonne");
+        let stone = document.querySelector("#inputStone");
+        if (id == "inputOnce"){
+            kilogram.value = value/35.274;
+            pound.value = value/16;
+            gram.value = value*28.3495; 
+            tonne.value = value/35274;
+            stone.value = value/224;
+        }
+        else if(id == "inputKilogram"){
+            once.value = value*35.274;
+            pound.value = value*2.20462;
+            gram.value = value*1000; 
+            tonne.value = value/1000;
+            stone.value = value/6.35029;
+        }
+        else if(id == "inputPound"){
+            once.value = value*16;
+            kilogram.value = value/2.20462;
+            gram.value = value*453.592; 
+            tonne.value = value/2204.62;
+            stone.value = value/14;
+        }
+        else if(id == "inputGram"){
+            once.value = value/28.3495;
+            kilogram.value = value/1000;
+            pound.value = value/453.592;
+            tonne.value = value/1e+6;
+            stone.value = value/6350.29;
+        }
+        else if(id == "inputTonne"){
+            once.value = value*35274;
+            kilogram.value = value*1000;
+            pound.value = value*2204.62;
+            gram.value = value*1e+6; 
+            stone.value = value*157.473;
+        }
+        else if(id == "inputStone"){
+            once.value = value*224;
+            kilogram.value = value*6.35029;
+            pound.value = value*14;
+            gram.value = value*6350.29; 
+            tonne.value = value/157.473;
+        }
+    }
+    const squareConverter = (id, value) => {
+        let millimeter = document.querySelector("#inputMillimeter");
+        let centimeter = document.querySelector("#inputCentimeter");
+        let meter = document.querySelector("#inputMeter");
+        let kilometer = document.querySelector("#inputKilometer");
+        let yard = document.querySelector("#inputYard");
+        let feet = document.querySelector("#inputFeet2");
+        if (id == "inputMillimeter"){
+            centimeter.value = value/100;
+            meter.value = value/1000000;
+            kilometer.value = value/1000000000000; 
+            yard.value = value*0.0000011959900463011;
+            feet.value = value*0.00001076391041671;
+        } else if (id == "inputCentimeter") {
+            millimeter.value = value*100;
+            meter.value = value*0.0001;
+            kilometer.value = value/10000000000; 
+            yard.value = value*0.00011;
+            feet.value = value*0.001076391041671;
+        } else if (id == "inputMeter") {
+            millimeter.value = value*1000000;
+            centimeter.value = value*10000;
+            kilometer.value = value*0.000001; 
+            yard.value = value*1.1959900463011;
+            feet.value = value*10.764;
+        } else if (id == "inputKilometer") {
+            millimeter.value = value*1000000000000;
+            centimeter.value = value*10000000000;
+            meter.value = value*1000000;
+            yard.value = value*1195990.0463011;
+            feet.value = value*10763910.41671;
+        } else if (id == "inputYard") {
+            millimeter.value = value/0.0000011960;
+            centimeter.value = value*8361;
+            meter.value = value*0.836;
+            kilometer.value = value/1196000; 
+            feet.value = value*90000;
+        } else if (id == "inputFeet2") {
+            millimeter.value = value/0.000010764;
+            centimeter.value = value*929;
+            meter.value = value*0.09290304;
+            kilometer.value = value/10764000; 
+            yard.value = value*0.11111;
+        }
+    }
+
+function forCalculator(){
+    document.getElementById('title').innerHTML = "Calculator";
+    document.getElementById('table').style = "display: block;"
+    document.getElementById('in-output').style = "display: block;"
+    document.getElementById('length').style = "display: none;"
+    document.getElementById('square').style = "display: none;"
+    document.getElementById('myDIV').style = "display: none;"
+    document.getElementById('Calculator').style = "color: white;"
+    document.getElementById('Length').style = "color: black;"
+    document.getElementById('Weights').style = "color: black;"
+
+}
+function forLenght(){
+    document.getElementById('title').innerHTML = "Length Converter";
+    document.getElementById('table').style = "display: none;"
+    document.getElementById('in-output').style = "display: none;"
+    document.getElementById('myDIV').style = "display: none;"
+    document.getElementById('square').style = "display: none;"
+    document.getElementById('length').style = "display: block;"
+    document.getElementById('Length').style = "color: white;"
+    document.getElementById('Calculator').style = "color: black;"
+    document.getElementById('Weights').style = "color: black;"
+    document.getElementById('Area').style = "color: black;"
+}
+function forweight(){
+    document.getElementById('title').innerHTML = "Weight Converter";
+    document.getElementById('table').style = "display: none;"
+    document.getElementById('in-output').style = "display: none;"
+    document.getElementById('length').style = "display: none;"
+    document.getElementById('square').style = "display: none;"
+    document.getElementById('myDIV').style = "display: block;"
+    document.getElementById('Weights').style = "color: white;"
+    document.getElementById('Calculator').style = "color: black;"
+    document.getElementById('Length').style = "color: black;"
+    document.getElementById('Area').style = "color: black;"
+}
+
+function forArea(){
+    document.getElementById('title').innerHTML = "Area Converter";
+    document.getElementById('table').style = "display: none;"
+    document.getElementById('in-output').style = "display: none;"
+    document.getElementById('length').style = "display: none;"
+    document.getElementById('myDIV').style = "display: none;"
+    document.getElementById('square').style = "display: block;"
+    document.getElementById('Area').style = "color: white;"
+    document.getElementById('Weights').style = "color: black;"
+    document.getElementById('Calculator').style = "color: black;"
+    document.getElementById('Length').style = "color: black;"
 }

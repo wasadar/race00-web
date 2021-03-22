@@ -14,7 +14,7 @@
                 <p id="output">0</p>
                 <p id="input">0</p>
             </div>
-            <table>
+            <table id="table">
                 <tbody>
                     <tr>
                         <td onclick="Clean()">C</td>
@@ -54,8 +54,96 @@
                     </tr>
                 </tbody>
             </table>
+            <!-- convert lenght -->
+            <div id="length">
+                <div class="length_div">
+                    <label>Feet</label>
+                    <input id="inputFeet"  type="number" placeholder="Feet" oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+                </div>
+                <div class="length_div">
+                    <label>Meters</label>
+                    <input id="inputMeters"  type="number" placeholder="Meters" oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+                </div>
+                <div class="length_div">
+                    <label>cm</label>
+                    <input id="inputcm"  type="number" placeholder="cm" oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+                </div>
+                <div class="length_div">
+                    <label>Yards</label>
+                    <input id="inputYards"  type="number" placeholder="Yards" oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+                </div>
+                <div class="length_div">
+                    <label>Kilometers</label>
+                    <input id="inputKilometers"  type="number" placeholder="Kilometers" oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+                </div>
+                <div class="length_div">
+                    <label>Miles</label>
+                    <input id="inputMiles"  type="number" placeholder="Miles" oninput="lengthConverter(this.id,this.value)" onchange="lengthConverter(this.id,this.value)">
+                </div>
+            </div>
+            <!-- -------------- -->
+            <!-- convert weights -->
+            <div class="weight" id="myDIV">
+                <div class="weight_div">
+                    <label>Once</label>
+                    <input id="inputOnce"  type="number" placeholder="Once" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+                </div>
+                <div class="weight_div">
+                    <label>Kilogram</label>
+                    <input id="inputKilogram"  type="number" placeholder="Kilogram" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+                </div>
+                <div class="weight_div">
+                    <label>Pound</label>
+                    <input id="inputPound"  type="number" placeholder="Pound" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+                </div>
+                <div class="weight_div">
+                    <label>Gram</label>
+                    <input id="inputGram"  type="number" placeholder="Gram" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+                </div>
+                <div class="weight_div">
+                    <label>Tonne</label>
+                    <input id="inputTonne"  type="number" placeholder="Tonne" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+                </div>
+                <div class="weight_div">
+                    <label>Stone</label>
+                    <input id="inputStone"  type="number" placeholder="Stone" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+                </div>
+            </div>
+             <!---Area Converter -->
+             <div id="square">
+                <div class="square_div">
+                    <label>mm <sup>2</sup></label>
+                    <input id="inputMillimeter"  type="number" placeholder="Millimeter^2" oninput="squareConverter(this.id,this.value)" onchange="squareConverter(this.id,this.value)">
+                </div>
+                <div class="square_div">
+                    <label>cm <sup>2</sup></label>
+                    <input id="inputCentimeter"  type="number" placeholder="Centimeter^2" oninput="squareConverter(this.id,this.value)" onchange="squareConverter(this.id,this.value)">
+                </div>
+                <div class="square_div">
+                    <label>m <sup>2</sup></label>
+                    <input id="inputMeter"  type="number" placeholder="Meter^2" oninput="squareConverter(this.id,this.value)" onchange="squareConverter(this.id,this.value)">
+                </div>
+                <div class="square_div">
+                    <label>km <sup>2</sup></label>
+                    <input id="inputKilometer"  type="number" placeholder="Kilometer^2" oninput="squareConverter(this.id,this.value)" onchange="squareConverter(this.id,this.value)">
+                </div>
+                <div class="square_div">
+                    <label>yd <sup>2</sup></label>
+                    <input id="inputYard"  type="number" placeholder="Yard^2" oninput="squareConverter(this.id,this.value)" onchange="squareConverter(this.id,this.value)">
+                </div>
+                <div class="square_div">
+                    <label>ft <sup>2</sup></label>
+                    <input id="inputFeet2"  type="number" placeholder="Feet^2" oninput="squareConverter(this.id,this.value)" onchange="squareConverter(this.id,this.value)">
+                </div>
+             </div>
+            <!-- -------------- -->
         </div>
-        <div></div>
+        <div class="btns">
+            <input id="Calculator" onclick="forCalculator()" type="submit" value="Calculator"></input>
+            <input id = "Length" type="submit" onclick="forLenght()" value="Length"></input>
+            <input id = "Weights" type="submit" onclick="forweight()" value="Weights"></input>
+            <input id = "Area" type="submit" onclick="forArea()" value="Area"></input>
+        </div>
         </div>
         <script src="js/script.js"></script>
     </body>
