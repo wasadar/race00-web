@@ -481,6 +481,7 @@ function forCalculator(){
     document.getElementById('Length').style = "color: black;"
     document.getElementById('Weights').style = "color: black;"
     document.getElementById('Area').style = "color: black;"
+    document.getElementById('Numerical').style = "color: black;"
 
 }
 function forLenght(){
@@ -489,11 +490,13 @@ function forLenght(){
     document.getElementById('in-output').style = "display: none;"
     document.getElementById('myDIV').style = "display: none;"
     document.getElementById('square').style = "display: none;"
+    document.getElementById('numerical').style = "display: none;"
     document.getElementById('length').style = "display: block;"
     document.getElementById('Length').style = "color: white;"
     document.getElementById('Calculator').style = "color: black;"
     document.getElementById('Weights').style = "color: black;"
     document.getElementById('Area').style = "color: black;"
+    document.getElementById('Numerical').style = "color: black;"
 }
 function forweight(){
     document.getElementById('title').innerHTML = "Weight Converter";
@@ -501,11 +504,13 @@ function forweight(){
     document.getElementById('in-output').style = "display: none;"
     document.getElementById('length').style = "display: none;"
     document.getElementById('square').style = "display: none;"
+    document.getElementById('numerical').style = "display: none;"
     document.getElementById('myDIV').style = "display: block;"
     document.getElementById('Weights').style = "color: white;"
     document.getElementById('Calculator').style = "color: black;"
     document.getElementById('Length').style = "color: black;"
     document.getElementById('Area').style = "color: black;"
+    document.getElementById('Numerical').style = "color: black;"
 }
 
 function forArea(){
@@ -514,11 +519,28 @@ function forArea(){
     document.getElementById('in-output').style = "display: none;"
     document.getElementById('length').style = "display: none;"
     document.getElementById('myDIV').style = "display: none;"
+    document.getElementById('numerical').style = "display: none;"
     document.getElementById('square').style = "display: block;"
     document.getElementById('Area').style = "color: white;"
     document.getElementById('Weights').style = "color: black;"
     document.getElementById('Calculator').style = "color: black;"
     document.getElementById('Length').style = "color: black;"
+    document.getElementById('Numerical').style = "color: black;"
+}
+function forNumerical(){
+    document.getElementById('title').innerHTML = "Numeral systems";
+    document.getElementById('table').style = "display: none;"
+    document.getElementById('in-output').style = "display: none;"
+    document.getElementById('length').style = "display: none;"
+    document.getElementById('myDIV').style = "display: none;"
+    document.getElementById('square').style = "display: none;"
+    document.getElementById('numerical').style = "display: block;"
+    document.getElementById('Numerical').style = "color: white;"
+    document.getElementById('Area').style = "color: black;"
+    document.getElementById('Weights').style = "color: black;"
+    document.getElementById('Calculator').style = "color: black;"
+    document.getElementById('Length').style = "color: black;"
+
 }
 let memory = 0;
 function cleaVALUE(){
@@ -529,4 +551,38 @@ function displaySavedValue(num) {
 }
 function displaySavedValueSumResult(num) {
     memory += document.getElementById('output').innerHTML * num;
+}
+
+function convertBase(value, from_base, to_base) {
+    var range = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/'.split('');
+    var from_range = range.slice(0, from_base);
+    var to_range = range.slice(0, to_base);
+    
+    var dec_value = value.split('').reverse().reduce(function (carry, digit, index) {
+      if (from_range.indexOf(digit) === -1) throw new Error('Invalid digit `'+digit+'` for base '+from_base+'.');
+      return carry += from_range.indexOf(digit) * (Math.pow(from_base, index));
+    }, 0);
+    
+    var new_value = '';
+    while (dec_value > 0) {
+      new_value = to_range[dec_value % to_base] + new_value;
+      dec_value = (dec_value - (dec_value % to_base)) / to_base;
+    }
+    return new_value || '0';
+}
+
+const Base_converter = (id, value) => {
+    let binary = document.querySelector("#inputBinary");
+    let decimal = document.querySelector("#inputDecimal");
+    let hexadicimal = document.querySelector("#inputHexadicimal");
+    if (id == "inputBinary"){
+        decimal.value = convertBase(binary.value, 2, 10);
+        hexadicimal.value = convertBase(binary.value, 2, 16);
+    } else if (id == "inputDecimal") {
+        binary.value = convertBase(decimal.value, 10, 2);
+        hexadicimal.value = convertBase(decimal.value, 10, 16);
+    } else if (id == "inputHexadicimal") {
+        binary.value = convertBase(hexadicimal.value, 16, 2);
+        decimal.value = convertBase(hexadicimal.value, 16, 10);
+    }
 }

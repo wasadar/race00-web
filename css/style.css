@@ -88,7 +88,7 @@ td:hover, #equal:hover{
     display: none;
     margin: 25px;
 }
-#length div, .weight div, #square div{
+#length div, .weight div, #square div, #numerical div{
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -98,7 +98,7 @@ label{
     font-size: 25px;
     color: wheat;
 }
-#length input, .weight input, #square input{
+#length input, .weight input, #square input, #numerical input{
     width: 30em;
     height: 2em;
 }
@@ -109,4 +109,8 @@ label{
 #square{
     display: none;
     margin: 25px;
+}
+#numerical{
+    display: none;
+    height: 700px;
 }

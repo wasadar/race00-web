@@ -143,12 +143,29 @@
                 </div>
              </div>
             <!-- -------------- -->
+            <!--Numerical convert-->
+            <div id="numerical">
+                <div class="binary">
+                    <label>Binary</label>
+                    <input id="inputBinary"  type="text" oninput="Base_converter(this.id,this.value)" onchange="Base_converter(this.id,this.value)">
+                </div>
+                <div class="decimal">
+                    <label>Decimal</label>
+                    <input id="inputDecimal"  type="text" oninput="Base_converter(this.id,this.value)" onchange="Base_converter(this.id,this.value)">
+                </div>
+                <div class="hexadicimal">
+                    <label>Hexadicimal</label>
+                    <input id="inputHexadicimal"  type="text" oninput="Base_converter(this.id,this.value)" onchange="Base_converter(this.id,this.value)">
+                </div>
+             </div>
+            <!-- -------------- -->
         </div>
         <div class="btns">
             <input id="Calculator" onclick="forCalculator()" type="submit" value="Calculator"></input>
             <input id = "Length" type="submit" onclick="forLenght()" value="Length"></input>
             <input id = "Weights" type="submit" onclick="forweight()" value="Weights"></input>
             <input id = "Area" type="submit" onclick="forArea()" value="Area"></input>
+            <input id = "Numerical" type="submit" onclick="forNumerical()" value="Numerical"></input>
         </div>
         </div>
         <script src="js/script.js"></script>
