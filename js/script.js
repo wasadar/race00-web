@@ -322,13 +322,7 @@ function changeSign(){
         }
     }
 }
-function lengthConv() {
-    if (length.style.display === "none") {
-        length.style.display = "block";
-    } else {
-        length.style.display = "none";
-    }
-  }
+
 const lengthConverter = (id, value) => {
     let feet = document.querySelector("#inputFeet");
     let metr = document.querySelector("#inputMeters");
@@ -486,6 +480,7 @@ function forCalculator(){
     document.getElementById('Calculator').style = "color: white;"
     document.getElementById('Length').style = "color: black;"
     document.getElementById('Weights').style = "color: black;"
+    document.getElementById('Area').style = "color: black;"
 
 }
 function forLenght(){
@@ -524,4 +519,14 @@ function forArea(){
     document.getElementById('Weights').style = "color: black;"
     document.getElementById('Calculator').style = "color: black;"
     document.getElementById('Length').style = "color: black;"
+}
+let memory = 0;
+function cleaVALUE(){
+    memory = 0;
+}
+function displaySavedValue(num) {
+    document.getElementById('input').innerHTML = memory;
+}
+function displaySavedValueSumResult(num) {
+    memory += document.getElementById('output').innerHTML * num;
 }

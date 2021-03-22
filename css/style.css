@@ -44,12 +44,13 @@
     padding: 10px;
 }
 table{
+    width: fit-content;
     border-collapse: collapse;
     background-color: #4080bf;
     text-shadow: 2px 2px gray;
 }
 td{
-    padding: 40px;
+    padding: 20px 40px;
     background: linear-gradient(45deg, #4080bf, #79a6d2);
     border: 2px solid #2d882d70;
     cursor: pointer;
