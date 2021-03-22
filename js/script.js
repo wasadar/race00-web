@@ -10,18 +10,19 @@ function writeToInput(char){
         }else{
             document.getElementById("input").innerHTML = char;
         }
-        
     }
     else{
         if(isOperator(char)){
-            // if(isOperator(currentchar.substring(currentchar.length -2, currentchar.length -1))){
-            //     document.getElementById("input").innerHTML = currentchar.substring(0, currentchar.length -2) + " " + char;
-            // }else{
-            //     document.getElementById("input").innerHTML = currentchar + " " + char;
-            // }
-            if(char === "*" || char === "/"){
-                document.getElementById("input").innerHTML = currentchar + " " + char + " ";
-            }else{
+            if ((isOperator(currentchar.substring(currentchar.length -2, currentchar.length -1))) && (isOperator(currentchar.substring(currentchar.length -4, currentchar.length -3)))){
+                document.getElementById("input").innerHTML = currentchar.substring(0, currentchar.length -4) + char + " ";
+            }
+            else if((isOperator(currentchar.substring(currentchar.length -2, currentchar.length -1))) && (char !== "-")) {
+                 document.getElementById("input").innerHTML = currentchar.substring(0, currentchar.length -2) + char + " ";
+            }
+            else if ((isOperator(currentchar.substring(currentchar.length -2, currentchar.length -1))) && (char === "-")){
+                document.getElementById("input").innerHTML = currentchar + char + " ";
+            }
+            else{
                 document.getElementById("input").innerHTML = currentchar + " " + char + " ";
             }    
         }else{
