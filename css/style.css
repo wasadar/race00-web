@@ -25,10 +25,10 @@
     font-size: 70px;
     color: #79a6d2;
     text-align: right;
-    width: 11.5ch;
-    overflow: hidden;
+    width: 15.5ch; /*11.5ch;(*/
+    overflow: scroll;
     white-space: nowrap;
-    text-overflow: ellipsis;
+    /*text-overflow: ellipsis;*/
 }
 #output{
     font-size: 30px;
