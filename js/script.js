@@ -184,7 +184,7 @@ function get_res(data){
         tmp1 = arr.indexOf("^");
         tmp2 = arr.indexOf("√");
         tmp3 = arr.indexOf("-√");
-        if ((tmp1 !== -1) && (tmp2 !== -1) && (tmp3 !== -1) {
+        if ((tmp1 !== -1) && (tmp2 !== -1) && (tmp3 !== -1)) {
             temp = Math.min(arr.indexOf("√"), arr.indexOf("^"));
         }
         else {
@@ -212,12 +212,20 @@ function get_res(data){
                 arr.splice(temp - 1, 3, String(Number(tmp1) ** Number(tmp2)));
             }
             else {
-                tmp1 = arr[temp + 1];
-                if (arr[temp + 1].match(/^[+-]?[0-9]+%$/) !== null) {
+                if (arr[temp][0] != "-") {
+                    tmp1 = arr[temp + 1];
+                    if (arr[temp + 1].match(/^[+-]?[0-9]+%$/) !== null) {
                         tmp1 = Number(arr[temp + 1].slice(0, -1)) / 100;
-                } 
-                arr.splice(temp, 2, String(Number(tmp1) ** 0.5));
-                console.log(tmp1);
+                    }
+                    arr.splice(temp, 2, String(Number(tmp1) ** 0.5));
+                }
+                else {
+                    tmp1 = arr[temp + 1];
+                    if (arr[temp + 1].match(/^[+-]?[0-9]+%$/) !== null) {
+                        tmp1 = Number(arr[temp + 1].slice(0, -1)) / 100;
+                    }
+                    arr.splice(temp, 2, "-" + String(Number(tmp1) ** 0.5));
+                }
             }
             check = true;
         }
@@ -272,17 +280,16 @@ function get_res(data){
             break;
         }else{
             if (Number.isNaN(Number(arr[ind])) !== true) {
-            res += Number(arr[ind]);
+                res += Number(arr[ind]);
             }
             else {
-            if (res !== 0){
-                res += res * (Number(arr[ind].slice(0, -1)) / 100);
+                if (res !== 0) {
+                    res += res * (Number(arr[ind].slice(0, -1)) / 100);
+                }
+                else {
+                    res += (Number(arr[ind].slice(0, -1)) / 100);
+                }
             }
-            else {
-                res += (Number(arr[ind].slice(0, -1)) / 100);
-          
-        }
-          }
         }
     }
     return String(res);
